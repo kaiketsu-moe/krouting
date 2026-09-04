@@ -54,6 +54,8 @@ jobs:
         with:
           tag_name: ${{ steps.v.outputs.tag }}
           name: ${{ steps.v.outputs.tag }}
+          draft: false
+          prerelease: false
           files: |
             dist/geosite.dat
             dist/geosite.dat.sha256
@@ -64,6 +66,8 @@ jobs:
             dist/incy/*
             dist/xray/*
             dist/mihomo/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit updated configs and deeplinks to repository
         run: |
