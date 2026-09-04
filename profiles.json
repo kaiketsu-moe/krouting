@@ -30,6 +30,7 @@
       "block_ip": [],
       "direct_sites": [
         "geosite:private",
+        "geosite:category-ru",
         "geosite:ru-services",
         "geosite:banks-ru",
         "geosite:games",
@@ -75,6 +76,7 @@
       "block_ip": [],
       "direct_sites": [
         "geosite:private",
+        "geosite:category-ru",
         "geosite:ru-services",
         "geosite:banks-ru"
       ],

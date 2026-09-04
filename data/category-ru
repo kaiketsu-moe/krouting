@@ -1,0 +1,20 @@
+# Полная категория RU (все российские доменные зоны + сервисы РФ)
+domain:ru
+domain:su
+domain:xn--p1ai
+domain:ru.com
+domain:ru.net
+
+# Российские сервисы и компании
+include:ru-services
+include:banks-ru
+include:whitelist
+
+# Дополнительные домены для проверки и сервисов
+domain:mangalib.me
+domain:animego.me
+domain:avtoto.ru
+domain:tilda.cc
+domain:kinescope.io
+domain:kinescopecdn.net
+domain:redheadsound.studio

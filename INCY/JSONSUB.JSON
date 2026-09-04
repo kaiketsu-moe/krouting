@@ -12,7 +12,7 @@
   "DomesticDns": "77.88.8.8",
   "Geoipurl": "https://github.com/kaiketsu-moe/krouting/releases/latest/download/geoip.dat",
   "Geositeurl": "https://github.com/kaiketsu-moe/krouting/releases/latest/download/geosite.dat",
-  "LastUpdated": "1788552055",
+  "LastUpdated": "1788553717",
   "DnsHosts": {
     "lkfl2.nalog.ru": "213.24.64.175",
     "lknpd.nalog.ru": "213.24.64.181"

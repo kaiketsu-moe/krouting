@@ -48,17 +48,46 @@ install_tools() {
 
 # ---------------------------------------------------------------- 2. geosite
 build_geosite() {
-  log "собираю geosite.dat из data/"
-  mkdir -p "$DIST/geosite-text"
+  log "подготавливаю базу доменов (v2fly/domain-list-community + кастомные правила)"
+  mkdir -p "$DIST/geosite-text" "$DIST/.build-data"
+  
+  if [ ! -d "$TOOLS/v2fly-data" ]; then
+    log "загружаю полную базу v2fly/domain-list-community"
+    git clone --depth=1 https://github.com/v2fly/domain-list-community.git "$TOOLS/v2fly-repo" 2>/dev/null || true
+    if [ -d "$TOOLS/v2fly-repo/data" ]; then
+      cp -r "$TOOLS/v2fly-repo/data" "$TOOLS/v2fly-data"
+      rm -rf "$TOOLS/v2fly-repo"
+    fi
+  fi
+
+  if [ -d "$TOOLS/v2fly-data" ]; then
+    cp -r "$TOOLS/v2fly-data"/* "$DIST/.build-data/"
+  fi
+
+  # Накладываем поверх наши правила
+  for f in "$ROOT/data"/*; do
+    [ -f "$f" ] || continue
+    fname="$(basename "$f")"
+    if [ -f "$DIST/.build-data/$fname" ]; then
+      printf '\n# --- Custom rules from krouting ---\n' >> "$DIST/.build-data/$fname"
+      cat "$f" >> "$DIST/.build-data/$fname"
+    else
+      cp "$f" "$DIST/.build-data/$fname"
+    fi
+  done
+
+  log "собираю полный geosite.dat"
   domain-list-community \
-    --datapath="$ROOT/data" \
+    --datapath="$DIST/.build-data" \
     --outputdir="$DIST" \
     --outputname=geosite.dat \
     --exportlists="$GEOSITE_LISTS"
+
   # экспортированные плоские списки кладём отдельно
   for name in ${GEOSITE_LISTS//,/ }; do
     [ -f "$DIST/$name.txt" ] && mv "$DIST/$name.txt" "$DIST/geosite-text/$name.txt"
   done
+  rm -rf "$DIST/.build-data"
 }
 
 # ------------------------------------------------- 3. рулсеты доменов mrs/srs
