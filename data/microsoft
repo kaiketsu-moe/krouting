@@ -1,0 +1,18 @@
+# Microsoft & Windows updates — direct
+domain:microsoft.com
+domain:windowsupdate.com
+domain:windows.com
+domain:live.com
+domain:office.com
+domain:office365.com
+domain:msftconnecttest.com
+domain:msn.com
+domain:bing.com
+domain:azure.com
+domain:visualstudio.com
+domain:1drv.ms
+domain:onedrive.com
+domain:onedrive.live.com
+domain:xbox.com
+domain:xboxlive.com
+domain:gamepass.com

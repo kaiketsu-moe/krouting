@@ -1,0 +1,11 @@
+# Google Play & Android services — proxy
+domain:play.google.com
+domain:googleplay.com
+domain:gvt1.com
+domain:android.clients.google.com
+domain:play-lh.googleusercontent.com
+domain:play.googleapis.com
+domain:connectivitycheck.gstatic.com
+domain:android-safebrowsing.google.com
+domain:safebrowsing.googleapis.com
+domain:firebaseinstallations.googleapis.com

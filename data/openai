@@ -1,0 +1,7 @@
+# AI Services (OpenAI, Anthropic, Claude) — proxy
+domain:openai.com
+domain:chatgpt.com
+domain:oaistatic.com
+domain:oaiusercontent.com
+domain:anthropic.com
+domain:claude.ai

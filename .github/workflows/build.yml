@@ -1,0 +1,89 @@
+name: build-and-release
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "data/**"
+      - "ip/**"
+      - "geoip.config.json"
+      - "profiles.json"
+      - "scripts/**"
+      - ".github/workflows/build.yml"
+  schedule:
+    # каждый четверг 04:00 UTC — подтягиваем свежие внешние источники IP
+    - cron: "0 4 * * 4"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+          cache: false
+
+      - name: Cache tools
+        uses: actions/cache@v4
+        with:
+          path: |
+            .tools
+            ~/go/pkg/mod
+          key: tools-${{ runner.os }}-${{ hashFiles('scripts/build.sh') }}
+
+      - name: Build
+        run: bash scripts/build.sh
+
+      - name: Set version
+        id: v
+        run: echo "tag=$(cat dist/version.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Checksums
+        run: |
+          cd dist
+          find . -type f ! -name "*.sha256" -exec sha256sum {} + > SHA256SUMS
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.v.outputs.tag }}
+          name: ${{ steps.v.outputs.tag }}
+          files: |
+            dist/geosite.dat
+            dist/geosite.dat.sha256
+            dist/geoip.dat
+            dist/geoip.dat.sha256
+            dist/SHA256SUMS
+            dist/happ/*
+            dist/incy/*
+            dist/xray/*
+            dist/mihomo/*
+
+      - name: Commit updated configs and deeplinks to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add HAPP/ INCY/ MIHOMO/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: auto-update configs and deeplinks [${{ steps.v.outputs.tag }}]"
+            git push origin HEAD:${{ github.ref }}
+          fi
+
+      - name: Push rulesets to release branch (для jsDelivr)
+        run: |
+          git config user.name "ci"
+          git config user.email "ci@localhost"
+          git checkout --orphan release
+          git rm -rf --cached . >/dev/null
+          find . -maxdepth 1 ! -name . ! -name .git ! -name dist -exec rm -rf {} +
+          mv dist/* .
+          rmdir dist
+          git add -A
+          git commit -m "release ${{ steps.v.outputs.tag }}"
+          git push -f origin release

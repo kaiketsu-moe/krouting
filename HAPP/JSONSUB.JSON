@@ -1,0 +1,29 @@
+{
+  "Name": "KRouting JSON",
+  "GlobalProxy": "true",
+  "RouteOrder": "block-proxy-direct",
+  "RemoteDNSType": "DoH",
+  "RemoteDNSDomain": "https://8.8.8.8/dns-query",
+  "RemoteDNSIP": "8.8.8.8",
+  "RemoteDns": "8.8.8.8",
+  "DomesticDNSType": "DoH",
+  "DomesticDNSDomain": "https://77.88.8.8/dns-query",
+  "DomesticDNSIP": "77.88.8.8",
+  "DomesticDns": "77.88.8.8",
+  "Geoipurl": "https://github.com/kaiketsu-moe/krouting/releases/latest/download/geoip.dat",
+  "Geositeurl": "https://github.com/kaiketsu-moe/krouting/releases/latest/download/geosite.dat",
+  "LastUpdated": "1788551215",
+  "DnsHosts": {
+    "lkfl2.nalog.ru": "213.24.64.175",
+    "lknpd.nalog.ru": "213.24.64.181"
+  },
+  "DirectSites": [],
+  "DirectIp": [],
+  "ProxySites": [],
+  "ProxyIp": [],
+  "BlockSites": [],
+  "BlockIp": [],
+  "DomainStrategy": "IPIfNonMatch",
+  "FakeDNS": "false",
+  "UseChunkFiles": "false"
+}

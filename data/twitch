@@ -1,0 +1,8 @@
+# Twitch Media & Player — direct (saves traffic and latency)
+domain:twitch.tv
+domain:ttvnw.net
+domain:ext-twitch.tv
+domain:jtvnw.net
+domain:live-video.net
+domain:twitchcdn.net
+domain:twitchsvc.net

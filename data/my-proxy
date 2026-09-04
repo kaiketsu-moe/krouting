@@ -1,0 +1,21 @@
+# Всё, что нужно гнать ЧЕРЕЗ прокси (включает основные сервисы + ваши кастомные правила)
+include:youtube
+include:telegram
+include:discord
+include:github
+include:google-play
+include:openai
+include:twitch-ads
+include:tspu-blocked
+
+# Кастомные домены через прокси (добавляйте сюда свои)
+domain:rutracker.org
+domain:nnmclub.to
+domain:rutor.info
+domain:flibusta.is
+domain:flibusta.site
+domain:notion.so
+domain:canva.com
+domain:medium.com
+domain:habr.com
+domain:4pda.to

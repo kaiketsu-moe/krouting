@@ -1,0 +1,14 @@
+# Всё, что идёт НАПРЯМУЮ (мимо VPN)
+include:ru-services
+include:banks-ru
+include:games
+include:apple
+include:microsoft
+include:twitch
+include:pinterest
+include:whitelist
+
+# Кастомные домены напрямую (добавляйте сюда свои)
+domain:2ip.ru
+domain:speedtest.net
+domain:fast.com

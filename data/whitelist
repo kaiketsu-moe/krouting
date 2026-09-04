@@ -1,0 +1,26 @@
+# Белый список РФ сервисов и IP-чекеров — direct
+domain:gosuslugi.ru
+domain:nalog.gov.ru
+domain:nalog.ru
+domain:cbr.ru
+domain:mos.ru
+domain:pfr.gov.ru
+domain:sfr.gov.ru
+domain:fssp.gov.ru
+domain:kremlin.ru
+domain:government.ru
+domain:duma.gov.ru
+domain:epp.genproc.gov.ru
+domain:mvd.ru
+domain:mchs.gov.ru
+domain:customs.gov.ru
+domain:zakupki.gov.ru
+domain:emias.info
+
+# IP чекеры (чтобы видеть свой реальный IP при проверке direct)
+domain:2ip.ru
+domain:ipify.org
+domain:checkip.amazonaws.com
+domain:ifconfig.me
+domain:ipapi.is
+domain:showip.net

@@ -1,0 +1,7 @@
+# Телеметрия Windows
+domain:vortex.data.microsoft.com
+domain:telecommand.telemetry.microsoft.com
+domain:watson.telemetry.microsoft.com
+domain:settings-win.data.microsoft.com
+domain:functional.events.data.microsoft.com
+keyword:telemetry.microsoft

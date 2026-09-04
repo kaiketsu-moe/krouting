@@ -1,0 +1,5 @@
+domain:localhost
+domain:local
+domain:lan
+domain:home.arpa
+domain:internal

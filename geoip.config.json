@@ -1,0 +1,103 @@
+{
+  "input": [
+    {
+      "type": "private",
+      "action": "add"
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "direct",
+        "uri": "https://raw.githubusercontent.com/ipverse/rir-ip/master/country/ru/ipv4-aggregated.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "direct",
+        "uri": "https://raw.githubusercontent.com/ipverse/rir-ip/master/country/by/ipv4-aggregated.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "direct",
+        "uri": "https://raw.githubusercontent.com/ipverse/rir-ip/master/country/kz/ipv4-aggregated.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "direct",
+        "uri": "./ip/my-direct.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "remove",
+      "args": {
+        "name": "direct",
+        "uri": "./ip/exclude-from-direct.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "proxy",
+        "uri": "./ip/my-proxy.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "telegram",
+        "uri": "https://core.telegram.org/resources/cidr.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "whitelist",
+        "uri": "./ip/whitelist.txt"
+      }
+    }
+  ],
+  "output": [
+    {
+      "type": "v2rayGeoIPDat",
+      "action": "output",
+      "args": {
+        "outputDir": "./dist",
+        "outputName": "geoip.dat"
+      }
+    },
+    {
+      "type": "text",
+      "action": "output",
+      "args": {
+        "outputDir": "./dist/ip-text"
+      }
+    },
+    {
+      "type": "singboxSRS",
+      "action": "output",
+      "args": {
+        "outputDir": "./dist/sing-box"
+      }
+    },
+    {
+      "type": "mihomoMRS",
+      "action": "output",
+      "args": {
+        "outputDir": "./dist/mihomo"
+      }
+    }
+  ]
+}

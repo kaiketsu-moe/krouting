@@ -1,0 +1,45 @@
+name: build-and-release
+
+on:
+  push:
+    branches: [master, main]
+  schedule:
+    - cron: "0 4 * * 4"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: docker
+    container:
+      image: docker.io/golang:1.23-bookworm
+    steps:
+      - name: Deps
+        run: apt-get update -qq && apt-get install -y -qq git curl python3 ca-certificates
+
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: bash scripts/build.sh
+
+      - name: Version
+        id: v
+        run: echo "tag=$(cat dist/version.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Checksums
+        run: cd dist && find . -type f -exec sha256sum {} + > SHA256SUMS
+
+      # Forgejo умеет releases через API: заливаем артефакты curl'ом.
+      - name: Publish release
+        env:
+          TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+          TAG: ${{ steps.v.outputs.tag }}
+        run: |
+          API="$GITHUB_SERVER_URL/api/v1/repos/$GITHUB_REPOSITORY"
+          ID=$(curl -sS -X POST "$API/releases" \
+            -H "Authorization: token $TOKEN" -H "Content-Type: application/json" \
+            -d "{\"tag_name\":\"$TAG\",\"name\":\"$TAG\",\"target_commitish\":\"$GITHUB_SHA\"}" \
+            | python3 -c 'import sys,json;print(json.load(sys.stdin)["id"])')
+          for f in dist/geosite.dat dist/geoip.dat dist/SHA256SUMS dist/happ/* dist/mihomo/*.yaml dist/xray/*; do
+            curl -sS -X POST "$API/releases/$ID/assets?name=$(basename "$f")" \
+              -H "Authorization: token $TOKEN" -F "attachment=@$f" >/dev/null
+          done

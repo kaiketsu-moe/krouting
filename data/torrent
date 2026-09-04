@@ -1,0 +1,15 @@
+# BitTorrent DHT & Public Trackers — block to protect VPS and save bandwidth
+domain:dht.aelitis.com
+domain:dht.transmissionbt.com
+domain:dht.vuze.com
+domain:router.bittorrent.com
+domain:router.utorrent.com
+domain:tracker.opentrackr.org
+domain:tracker.openbittorrent.com
+domain:open.demonii.com
+domain:open.stealth.si
+domain:tracker.torrent.eu.org
+domain:tracker.coppersurfer.tk
+domain:tracker.internetwarriors.net
+domain:tracker.leechers-paradise.org
+domain:opentracker.i2p.rocks

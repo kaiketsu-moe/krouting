@@ -1,0 +1,103 @@
+{
+  "publish": {
+    "comment": "Куда будут опубликованы geo-файлы. Замени OWNER/REPO на свой (GitHub Releases или jsDelivr).",
+    "base_url": "https://github.com/kaiketsu-moe/krouting/releases/latest/download",
+    "ruleset_base_url": "https://cdn.jsdelivr.net/gh/kaiketsu-moe/krouting@release",
+    "raw_base_url": "https://raw.githubusercontent.com/kaiketsu-moe/krouting/main"
+  },
+  "dns": {
+    "domestic": { "type": "DoH", "domain": "https://77.88.8.8/dns-query", "ip": "77.88.8.8" },
+    "remote": { "type": "DoH", "domain": "https://8.8.8.8/dns-query", "ip": "8.8.8.8" }
+  },
+  "dns_hosts": {
+    "lkfl2.nalog.ru": "213.24.64.175",
+    "lknpd.nalog.ru": "213.24.64.181"
+  },
+  "profiles": [
+    {
+      "name": "DEFAULT",
+      "display_name": "KRouting",
+      "global_proxy": true,
+      "route_order": "block-proxy-direct",
+      "domain_strategy": "IPIfNonMatch",
+      "use_chunk_files": true,
+      "block_sites": [
+        "geosite:win-spy",
+        "geosite:torrent",
+        "geosite:ads",
+        "geosite:my-block"
+      ],
+      "block_ip": [],
+      "direct_sites": [
+        "geosite:private",
+        "geosite:ru-services",
+        "geosite:banks-ru",
+        "geosite:games",
+        "geosite:microsoft",
+        "geosite:apple",
+        "geosite:twitch",
+        "geosite:pinterest",
+        "geosite:my-direct"
+      ],
+      "direct_ip": [
+        "geoip:private",
+        "geoip:direct"
+      ],
+      "proxy_sites": [
+        "geosite:youtube",
+        "geosite:telegram",
+        "geosite:discord",
+        "geosite:github",
+        "geosite:google-play",
+        "geosite:openai",
+        "geosite:twitch-ads",
+        "geosite:tspu-blocked",
+        "geosite:my-proxy"
+      ],
+      "proxy_ip": [
+        "geoip:proxy",
+        "geoip:telegram"
+      ]
+    },
+    {
+      "name": "WHITELIST",
+      "display_name": "KRouting Whitelist",
+      "global_proxy": true,
+      "route_order": "block-proxy-direct",
+      "domain_strategy": "IPIfNonMatch",
+      "use_chunk_files": true,
+      "block_sites": [
+        "geosite:win-spy",
+        "geosite:torrent",
+        "geosite:ads",
+        "geosite:my-block"
+      ],
+      "block_ip": [],
+      "direct_sites": [
+        "geosite:private",
+        "geosite:ru-services",
+        "geosite:banks-ru"
+      ],
+      "direct_ip": [
+        "geoip:private",
+        "geoip:direct"
+      ],
+      "proxy_sites": [],
+      "proxy_ip": []
+    },
+    {
+      "name": "JSONSUB",
+      "display_name": "KRouting JSON",
+      "global_proxy": true,
+      "route_order": "block-proxy-direct",
+      "domain_strategy": "IPIfNonMatch",
+      "use_chunk_files": false,
+      "block_sites": [],
+      "block_ip": [],
+      "direct_sites": [],
+      "direct_ip": [],
+      "proxy_sites": [],
+      "proxy_ip": []
+    }
+  ]
+}
