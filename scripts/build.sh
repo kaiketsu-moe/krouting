@@ -94,6 +94,13 @@ render_configs() {
   if [ -f "$DIST/geosite.dat" ]; then
     sha256sum "$DIST/geosite.dat" | awk '{print $1}' > "$DIST/geosite.dat.sha256"
   fi
+  # Архивы правил для удобного скачивания
+  if [ -d "$DIST/mihomo" ]; then
+    tar -czf "$DIST/mihomo.tar.gz" -C "$DIST" mihomo
+  fi
+  if [ -d "$DIST/sing-box" ]; then
+    tar -czf "$DIST/sing-box.tar.gz" -C "$DIST" sing-box
+  fi
 }
 
 install_tools

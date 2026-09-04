@@ -504,7 +504,7 @@ rules:
 
 def main() -> None:
     # Директории в dist/
-    for sub in ("happ", "incy", "xray", "mihomo"):
+    for sub in ("happ", "incy", "xray", "mihomo", "release"):
         (DIST / sub).mkdir(parents=True, exist_ok=True)
 
     # Директории в корне репозитория (как в roscomvpn-routing)
@@ -536,11 +536,17 @@ def main() -> None:
         (ROOT / "INCY" / f"{name}.DEEPLINK").write_text(incy_link, encoding="utf-8")
 
         # 3. Xray
-        (DIST / "xray" / f"{name}.json").write_text(
-            json.dumps(xray_config(p), ensure_ascii=False, indent=2), encoding="utf-8"
-        )
+        xray_json = json.dumps(xray_config(p), ensure_ascii=False, indent=2)
+        (DIST / "xray" / f"{name}.json").write_text(xray_json, encoding="utf-8")
 
-    # 4. Mihomo
+        # 4. Файлы с уникальными префиксами для GitHub Release (исключает конфликт имен)
+        (DIST / "release" / f"happ-{name}.json").write_text(formatted_json, encoding="utf-8")
+        (DIST / "release" / f"happ-{name}.link").write_text(happ_link, encoding="utf-8")
+        (DIST / "release" / f"incy-{name}.json").write_text(formatted_json, encoding="utf-8")
+        (DIST / "release" / f"incy-{name}.link").write_text(incy_link, encoding="utf-8")
+        (DIST / "release" / f"xray-{name}.json").write_text(xray_json, encoding="utf-8")
+
+    # 5. Mihomo
     mihomo_default = mihomo_config(remnawave=False)
     mihomo_remnawave = mihomo_config(remnawave=True)
 
@@ -548,6 +554,8 @@ def main() -> None:
     (ROOT / "MIHOMO" / "template_remnawave.yaml").write_text(mihomo_remnawave, encoding="utf-8")
     (DIST / "mihomo" / "default.yaml").write_text(mihomo_default, encoding="utf-8")
     (DIST / "mihomo" / "template_remnawave.yaml").write_text(mihomo_remnawave, encoding="utf-8")
+    (DIST / "release" / "mihomo-default.yaml").write_text(mihomo_default, encoding="utf-8")
+    (DIST / "release" / "mihomo-template_remnawave.yaml").write_text(mihomo_remnawave, encoding="utf-8")
 
     (DIST / "version.txt").write_text(STAMP + "\n", encoding="utf-8")
     print(f"rendered {len(CFG['profiles'])} profiles for HAPP, INCY, MIHOMO, version {STAMP}")

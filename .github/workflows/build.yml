@@ -49,6 +49,16 @@ jobs:
           cd dist
           find . -type f ! -name "*.sha256" -exec sha256sum {} + > SHA256SUMS
 
+      - name: Commit updated configs and deeplinks to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add HAPP/ INCY/ MIHOMO/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: auto-update configs and deeplinks [${{ steps.v.outputs.tag }}]"
+            git push origin HEAD:${{ github.ref }}
+          fi
+
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -62,22 +72,11 @@ jobs:
             dist/geoip.dat
             dist/geoip.dat.sha256
             dist/SHA256SUMS
-            dist/happ/*
-            dist/incy/*
-            dist/xray/*
-            dist/mihomo/*
+            dist/mihomo.tar.gz
+            dist/sing-box.tar.gz
+            dist/release/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Commit updated configs and deeplinks to repository
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add HAPP/ INCY/ MIHOMO/
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: auto-update configs and deeplinks [${{ steps.v.outputs.tag }}]"
-            git push origin HEAD:${{ github.ref }}
-          fi
 
       - name: Push rulesets to release branch (для jsDelivr)
         run: |
