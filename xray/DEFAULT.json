@@ -1,0 +1,103 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "address": "8.8.8.8",
+        "domains": [
+          "geosite:youtube",
+          "geosite:telegram",
+          "geosite:discord",
+          "geosite:github",
+          "geosite:google-play",
+          "geosite:openai",
+          "geosite:twitch-ads",
+          "geosite:tspu-blocked",
+          "geosite:my-proxy"
+        ]
+      },
+      {
+        "address": "77.88.8.8",
+        "domains": [
+          "geosite:private",
+          "geosite:category-ru",
+          "geosite:ru-services",
+          "geosite:banks-ru",
+          "geosite:games",
+          "geosite:microsoft",
+          "geosite:apple",
+          "geosite:twitch",
+          "geosite:pinterest",
+          "geosite:my-direct"
+        ],
+        "expectIPs": [
+          "geoip:private",
+          "geoip:direct"
+        ]
+      },
+      "8.8.8.8"
+    ],
+    "queryStrategy": "UseIPv4"
+  },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "domain": [
+          "geosite:win-spy",
+          "geosite:torrent",
+          "geosite:ads",
+          "geosite:my-block"
+        ],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "domain": [
+          "geosite:youtube",
+          "geosite:telegram",
+          "geosite:discord",
+          "geosite:github",
+          "geosite:google-play",
+          "geosite:openai",
+          "geosite:twitch-ads",
+          "geosite:tspu-blocked",
+          "geosite:my-proxy"
+        ],
+        "outboundTag": "proxy"
+      },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:proxy",
+          "geoip:telegram"
+        ],
+        "outboundTag": "proxy"
+      },
+      {
+        "type": "field",
+        "domain": [
+          "geosite:private",
+          "geosite:category-ru",
+          "geosite:ru-services",
+          "geosite:banks-ru",
+          "geosite:games",
+          "geosite:microsoft",
+          "geosite:apple",
+          "geosite:twitch",
+          "geosite:pinterest",
+          "geosite:my-direct"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private",
+          "geoip:direct"
+        ],
+        "outboundTag": "direct"
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "address": "8.8.8.8",
+        "domains": []
+      },
+      {
+        "address": "77.88.8.8",
+        "domains": [
+          "geosite:private",
+          "geosite:category-ru",
+          "geosite:ru-services",
+          "geosite:banks-ru"
+        ],
+        "expectIPs": [
+          "geoip:private",
+          "geoip:direct"
+        ]
+      },
+      "8.8.8.8"
+    ],
+    "queryStrategy": "UseIPv4"
+  },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "domain": [
+          "geosite:win-spy",
+          "geosite:torrent",
+          "geosite:ads",
+          "geosite:my-block"
+        ],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "domain": [
+          "geosite:private",
+          "geosite:category-ru",
+          "geosite:ru-services",
+          "geosite:banks-ru"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private",
+          "geoip:direct"
+        ],
+        "outboundTag": "direct"
+      }
+    ]
+  }
+}

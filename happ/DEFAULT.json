@@ -1,0 +1,67 @@
+{
+  "Name": "KRouting",
+  "GlobalProxy": "true",
+  "RouteOrder": "block-proxy-direct",
+  "RemoteDNSType": "DoH",
+  "RemoteDNSDomain": "https://8.8.8.8/dns-query",
+  "RemoteDNSIP": "8.8.8.8",
+  "RemoteDns": "8.8.8.8",
+  "DomesticDNSType": "DoH",
+  "DomesticDNSDomain": "https://77.88.8.8/dns-query",
+  "DomesticDNSIP": "77.88.8.8",
+  "DomesticDns": "77.88.8.8",
+  "Geoipurl": "https://github.com/kaiketsu-moe/krouting/releases/latest/download/geoip.dat",
+  "Geositeurl": "https://github.com/kaiketsu-moe/krouting/releases/latest/download/geosite.dat",
+  "LastUpdated": "1789029204",
+  "DnsHosts": {
+    "lkfl2.nalog.ru": "213.24.64.175",
+    "lknpd.nalog.ru": "213.24.64.181"
+  },
+  "DirectSites": [
+    "geosite:private",
+    "geosite:category-ru",
+    "geosite:ru-services",
+    "geosite:banks-ru",
+    "geosite:games",
+    "geosite:microsoft",
+    "geosite:apple",
+    "geosite:twitch",
+    "geosite:pinterest",
+    "geosite:my-direct"
+  ],
+  "DirectIp": [
+    "geoip:private",
+    "geoip:direct",
+    "10.0.0.0/8",
+    "172.16.0.0/12",
+    "192.168.0.0/16",
+    "169.254.0.0/16",
+    "224.0.0.0/4",
+    "255.255.255.255"
+  ],
+  "ProxySites": [
+    "geosite:youtube",
+    "geosite:telegram",
+    "geosite:discord",
+    "geosite:github",
+    "geosite:google-play",
+    "geosite:openai",
+    "geosite:twitch-ads",
+    "geosite:tspu-blocked",
+    "geosite:my-proxy"
+  ],
+  "ProxyIp": [
+    "geoip:proxy",
+    "geoip:telegram"
+  ],
+  "BlockSites": [
+    "geosite:win-spy",
+    "geosite:torrent",
+    "geosite:ads",
+    "geosite:my-block"
+  ],
+  "BlockIp": [],
+  "DomainStrategy": "IPIfNonMatch",
+  "FakeDNS": "false",
+  "UseChunkFiles": "true"
+}

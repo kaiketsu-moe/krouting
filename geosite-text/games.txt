@@ -1,0 +1,11 @@
+domain:battlestate.com
+domain:epicgames.com
+domain:escapefromtarkov.com
+domain:faceit.com
+domain:riotcdn.net
+domain:riotgames.com
+domain:steamcommunity.com
+domain:steampowered.com
+domain:steamserver.net
+domain:steamstatic.com
+domain:unrealengine.com
