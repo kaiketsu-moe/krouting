@@ -1,0 +1,6 @@
+domain:functional.events.data.microsoft.com
+domain:settings-win.data.microsoft.com
+domain:telecommand.telemetry.microsoft.com
+domain:vortex.data.microsoft.com
+domain:watson.telemetry.microsoft.com
+keyword:telemetry.microsoft
