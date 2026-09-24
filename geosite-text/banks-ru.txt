@@ -1,0 +1,8 @@
+domain:alfabank.ru
+domain:gazprombank.ru
+domain:raiffeisen.ru
+domain:sber.ru
+domain:sberbank.ru
+domain:tbank.ru
+domain:tinkoff.ru
+domain:vtb.ru
