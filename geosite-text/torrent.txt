@@ -1,0 +1,14 @@
+domain:dht.aelitis.com
+domain:dht.transmissionbt.com
+domain:dht.vuze.com
+domain:open.demonii.com
+domain:open.stealth.si
+domain:opentracker.i2p.rocks
+domain:router.bittorrent.com
+domain:router.utorrent.com
+domain:tracker.coppersurfer.tk
+domain:tracker.internetwarriors.net
+domain:tracker.leechers-paradise.org
+domain:tracker.openbittorrent.com
+domain:tracker.opentrackr.org
+domain:tracker.torrent.eu.org
