@@ -1,0 +1,6 @@
+domain:ad.mail.ru
+domain:ads.vk.com
+domain:an.yandex.ru
+domain:doubleclick.net
+domain:googleadservices.com
+domain:googlesyndication.com

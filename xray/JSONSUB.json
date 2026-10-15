@@ -1,0 +1,21 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "address": "8.8.8.8",
+        "domains": []
+      },
+      {
+        "address": "77.88.8.8",
+        "domains": [],
+        "expectIPs": []
+      },
+      "8.8.8.8"
+    ],
+    "queryStrategy": "UseIPv4"
+  },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": []
+  }
+}
