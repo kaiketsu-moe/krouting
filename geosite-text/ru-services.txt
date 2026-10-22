@@ -1,0 +1,13 @@
+domain:cdnvideo.ru
+domain:gosuslugi.ru
+domain:mail.ru
+domain:nalog.gov.ru
+domain:ok.ru
+domain:userapi.com
+domain:vk.com
+domain:vk.ru
+domain:vkuservideo.net
+domain:ya.ru
+domain:yandex.net
+domain:yandex.ru
+domain:yastatic.net
